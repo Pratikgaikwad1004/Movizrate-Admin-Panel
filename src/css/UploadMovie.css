@@ -1,0 +1,20 @@
+.upload-movie-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.upload-movie-item {
+    margin-top: 20px;
+}
+
+.upload-movie-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.upload-items {
+    width: 400px;
+}

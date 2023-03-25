@@ -1,5 +1,4 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
 import Login from "./views/Login";
 import "./css/Login.css";
 import UserState from "./states/UserState";
@@ -14,7 +13,6 @@ function App() {
       <MessageState>
         <UserState>
           <Message />
-          <Navbar />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />

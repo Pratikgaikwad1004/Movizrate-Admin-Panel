@@ -1,3 +1,4 @@
+import { message } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MessageContext from "../contexts/MessageContext";
@@ -42,13 +43,14 @@ const UserState = (props) => {
         .then((result) => {
           console.log(result);
           if (!result.authtoken) {
-            return showMessage("Error", `${result.error}`);
+            return message.error(`${result.error}`);
           }
           if (!result.user.admin) {
-            return showMessage("Error", "Invalid Details!");
+            return message.error(`Invalid Details!`);
           } else {
             setUser(true);
             localStorage.setItem("@token", result.authtoken);
+            message.success("Login Successful")
             return navigate("/");
           }
         })
