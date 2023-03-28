@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
-import { Button, message, Upload, Input } from "antd";
+import { Button, message, Upload, Input, Select } from "antd";
 import "../css/UploadMovie.css";
 const { TextArea } = Input;
 
-const UploadMovie = () => {
+const UploadMovie = ({ setKey, reloadActor }) => {
   const [imageURL, setImageURL] = useState("");
   const [posterImageUrl, setPosterImageUrl] = useState("");
   const [genre, setGenre] = useState("");
@@ -12,7 +12,9 @@ const UploadMovie = () => {
   const [movieName, setMovieName] = useState("");
   const [type, setType] = useState("");
   const [videoID, setVideoID] = useState("");
-
+  const onChange = (value) => {
+    setType(value);
+  };
   const props = {
     name: "file",
     accept: "image/png, image/jpeg, image/jpg",
@@ -141,15 +143,7 @@ const UploadMovie = () => {
       .then((result) => {
         if (result.uploaded) {
           message.success("Movie is uploaded");
-          setImageURL("");
-          setPosterImageUrl("");
-          setMovieName("");
-          setDescription("");
-          setGenre("");
-          setType("");
-          setVideoID("");
-          props.showUploadList = false;
-          props2.listType = false;
+          setKey(reloadActor + 1);
         } else {
           message.error("Failure!");
         }
@@ -191,11 +185,26 @@ const UploadMovie = () => {
             />
           </div>
           <div className="upload-movie-item">
-            <Input
+            <Select
               className="upload-items"
-              placeholder="Enter type Movie/TV-Series"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
+              placeholder="Select Type"
+              optionFilterProp="children"
+              onChange={onChange}
+              filterOption={(input, option) =>
+                (option?.label ?? "")
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              }
+              options={[
+                {
+                  value: "movie",
+                  label: "Movie",
+                },
+                {
+                  value: "tvseries",
+                  label: "TV-Series",
+                },
+              ]}
             />
           </div>
           <div className="upload-movie-item">

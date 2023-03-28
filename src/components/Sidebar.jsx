@@ -12,6 +12,7 @@ import Navbar from "./Navbar";
 import { MovieOutlined } from "@mui/icons-material";
 import AddActor from "../views/AddActor";
 import LinkActors from "../views/LinkActors";
+import Ott from "../views/Ott";
 
 const { Sider, Content } = Layout;
 const Sidebar = () => {
@@ -77,7 +78,11 @@ const Sidebar = () => {
           }}
         >
           {itemKey === "1" ? (
-            <UploadMovie />
+            <UploadMovie
+              key={refresh}
+              setKey={setRefresh}
+              reloadActor={refresh}
+            />
           ) : itemKey === "2" ? (
             <AddActor key={refresh} setKey={setRefresh} reloadActor={refresh} />
           ) : itemKey === "3" ? (
@@ -91,7 +96,7 @@ const Sidebar = () => {
           ) : itemKey === "5" ? (
             "Upcoming"
           ) : itemKey === "6" ? (
-            "OTT"
+            <Ott key={refresh} setKey={setRefresh} reloadComp={refresh} />
           ) : (
             ""
           )}
