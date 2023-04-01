@@ -12,8 +12,12 @@ const UploadMovie = ({ setKey, reloadActor }) => {
   const [movieName, setMovieName] = useState("");
   const [type, setType] = useState("");
   const [videoID, setVideoID] = useState("");
+  const [upcomming, setUpcomming] = useState(false);
   const onChange = (value) => {
     setType(value);
+  };
+  const onChangeUpcomming = (value) => {
+    setUpcomming(value);
   };
   const props = {
     name: "file",
@@ -129,6 +133,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
       desc: description,
       type: type,
       videoID: videoID,
+      upcomming: upcomming,
     });
 
     const requestOptions = {
@@ -222,6 +227,29 @@ const UploadMovie = ({ setKey, reloadActor }) => {
               placeholder="Enter movie description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="upload-movie-item">
+            <Select
+              className="upload-items"
+              placeholder="Select Upcomming"
+              optionFilterProp="children"
+              onChange={onChangeUpcomming}
+              filterOption={(input, option) =>
+                (option?.label ?? "")
+                  .toLowerCase()
+                  .includes(input.toLowerCase())
+              }
+              options={[
+                {
+                  value: true,
+                  label: "Yes",
+                },
+                {
+                  value: false,
+                  label: "No",
+                },
+              ]}
             />
           </div>
           <div className="upload-movie-item">

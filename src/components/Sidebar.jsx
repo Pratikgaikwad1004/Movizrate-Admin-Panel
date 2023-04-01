@@ -1,9 +1,8 @@
 import {
   UploadOutlined,
-  UserAddOutlined,
   PlusSquareOutlined,
-  VideoCameraAddOutlined,
   LinkOutlined,
+  SlidersOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
@@ -13,6 +12,7 @@ import { MovieOutlined } from "@mui/icons-material";
 import AddActor from "../views/AddActor";
 import LinkActors from "../views/LinkActors";
 import Ott from "../views/Ott";
+import AddCarousel from "../views/AddCarousel";
 
 const { Sider, Content } = Layout;
 const Sidebar = () => {
@@ -49,19 +49,14 @@ const Sidebar = () => {
               label: "Link Actors to Movies",
             },
             {
-              key: "4",
-              icon: <UserAddOutlined />,
-              label: "Create new admin",
-            },
-            {
-              key: "5",
-              icon: <VideoCameraAddOutlined />,
-              label: "Add upcomming movie",
-            },
-            {
               key: "6",
               icon: <MovieOutlined />,
               label: "OTT Platform",
+            },
+            {
+              key: "7",
+              icon: <SlidersOutlined />,
+              label: "Edit Carousel",
             },
           ]}
         />
@@ -97,6 +92,12 @@ const Sidebar = () => {
             "Upcoming"
           ) : itemKey === "6" ? (
             <Ott key={refresh} setKey={setRefresh} reloadComp={refresh} />
+          ) : itemKey === "7" ? (
+            <AddCarousel
+              key={refresh}
+              setKey={setRefresh}
+              reloadComp={refresh}
+            />
           ) : (
             ""
           )}

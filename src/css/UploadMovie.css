@@ -1,6 +1,7 @@
 .upload-movie-container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .upload-movie-item {
