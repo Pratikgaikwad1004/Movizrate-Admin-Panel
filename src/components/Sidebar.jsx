@@ -3,6 +3,7 @@ import {
   PlusSquareOutlined,
   LinkOutlined,
   SlidersOutlined,
+  UserAddOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
@@ -13,6 +14,7 @@ import AddActor from "../views/AddActor";
 import LinkActors from "../views/LinkActors";
 import Ott from "../views/Ott";
 import AddCarousel from "../views/AddCarousel";
+import AddAdmin from "../views/AddAdmin";
 
 const { Sider, Content } = Layout;
 const Sidebar = () => {
@@ -58,6 +60,11 @@ const Sidebar = () => {
               icon: <SlidersOutlined />,
               label: "Edit Carousel",
             },
+            {
+              key: "8",
+              icon: <UserAddOutlined />,
+              label: "Add New Admin",
+            },
           ]}
         />
       </Sider>
@@ -98,6 +105,8 @@ const Sidebar = () => {
               setKey={setRefresh}
               reloadComp={refresh}
             />
+          ) : itemKey === "8" ? (
+            <AddAdmin key={refresh} setKey={setRefresh} reloadComp={refresh} />
           ) : (
             ""
           )}

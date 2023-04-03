@@ -50,7 +50,7 @@ const UserState = (props) => {
           } else {
             setUser(true);
             localStorage.setItem("@token", result.authtoken);
-            message.success("Login Successful")
+            message.success("Login Successful");
             return navigate("/");
           }
         })
