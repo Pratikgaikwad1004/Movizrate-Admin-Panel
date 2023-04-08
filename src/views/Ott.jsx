@@ -1,5 +1,6 @@
 import { Button, message, Select } from "antd";
 import React, { useState } from "react";
+import config from "../config.json";
 
 const Ott = ({ setKey, reloadActor }) => {
   const [movie, setMovie] = useState("");
@@ -22,7 +23,7 @@ const Ott = ({ setKey, reloadActor }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/searchmovie/${value}`,
+        `${config.server.host}/api/v1/movies/searchmovie/${value}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -61,7 +62,7 @@ const Ott = ({ setKey, reloadActor }) => {
         redirect: "follow",
       };
 
-      fetch("http://127.0.0.1:3000/api/v1/movies/addott", requestOptions)
+      fetch(`${config.server.host}/api/v1/movies/addott`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.status) {

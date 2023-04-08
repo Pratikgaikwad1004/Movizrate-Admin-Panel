@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, message } from "antd";
 import "../css/UploadMovie.css";
 import { Select } from "antd";
+import config from "../config.json";
 
 const LinkActor = ({ setKey, reloadComp }) => {
   const [actor, setActor] = useState("");
@@ -21,7 +22,7 @@ const LinkActor = ({ setKey, reloadComp }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/searchactor/${value}`,
+        `${config.server.host}/api/v1/movies/searchactor/${value}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -49,7 +50,7 @@ const LinkActor = ({ setKey, reloadComp }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/searchmovie/${value}`,
+        `${config.server.host}/api/v1/movies/searchmovie/${value}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -81,7 +82,7 @@ const LinkActor = ({ setKey, reloadComp }) => {
         redirect: "follow",
       };
 
-      fetch("http://127.0.0.1:3000/api/v1/movies/addmovieactor", requestOptions)
+      fetch(`${config.server.host}/api/v1/movies/addmovieactor`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.error) {

@@ -1,5 +1,6 @@
 import { Button, Select, message } from "antd";
 import React, { useState } from "react";
+import config from "../config.json";
 
 const AddAdmin = () => {
   const [users, setUsers] = useState([]);
@@ -24,7 +25,7 @@ const AddAdmin = () => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/auth/getusers/${value}`,
+        `${config.server.host}/api/v1/auth/getusers/${value}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -52,7 +53,7 @@ const AddAdmin = () => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/auth/createadmin/${user}`,
+        `${config.server.host}/api/v1/auth/createadmin/${user}`,
         requestOptions
       )
         .then((response) => response.json())

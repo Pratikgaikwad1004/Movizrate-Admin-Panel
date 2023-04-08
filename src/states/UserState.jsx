@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MessageContext from "../contexts/MessageContext";
 import UserContext from "../contexts/UserContext";
-
+import config from "../config.json"
 const UserState = (props) => {
   const [user, setUser] = useState(false);
   console.log(user);
@@ -38,7 +38,7 @@ const UserState = (props) => {
         redirect: "follow",
       };
 
-      return fetch("http://127.0.0.1:3000/api/v1/auth/login", requestOptions)
+      return fetch(`${config.server.host}/api/v1/auth/login`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           console.log(result);

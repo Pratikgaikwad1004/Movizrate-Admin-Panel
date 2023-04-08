@@ -1,5 +1,6 @@
 import { Button, Select, message } from "antd";
 import React, { useEffect, useState } from "react";
+import config from "../config.json";
 
 const AddCarousel = ({ setKey, reloadActor }) => {
   const [movie, setMovie] = useState("");
@@ -23,7 +24,7 @@ const AddCarousel = ({ setKey, reloadActor }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/searchmovie/${value}`,
+        `${config.server.host}/api/v1/movies/searchmovie/${value}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -46,7 +47,7 @@ const AddCarousel = ({ setKey, reloadActor }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/getcarouselmovies`,
+        `${config.server.host}/api/v1/movies/getcarouselmovies`,
         requestOptions
       )
         .then((response) => response.json())
@@ -68,7 +69,7 @@ const AddCarousel = ({ setKey, reloadActor }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/addincarousel/${movie}`,
+        `${config.server.host}/api/v1/movies/addincarousel/${movie}`,
         requestOptions
       )
         .then((response) => response.json())
@@ -96,7 +97,7 @@ const AddCarousel = ({ setKey, reloadActor }) => {
       };
 
       fetch(
-        `http://127.0.0.1:3000/api/v1/movies/deletecarouselmovie/${carouselMovie}`,
+        `${config.server.host}/api/v1/movies/deletecarouselmovie/${carouselMovie}`,
         requestOptions
       )
         .then((response) => response.json())

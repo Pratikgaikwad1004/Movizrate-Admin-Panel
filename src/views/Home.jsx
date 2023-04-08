@@ -11,9 +11,7 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-      <Sidebar />
-    );
+  return <Sidebar />;
 };
 
 export default Home;

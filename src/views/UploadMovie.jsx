@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, message, Upload, Input, Select } from "antd";
 import "../css/UploadMovie.css";
+import config from "../config.json";
 const { TextArea } = Input;
 
 const UploadMovie = ({ setKey, reloadActor }) => {
@@ -23,7 +24,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
     name: "file",
     accept: "image/png, image/jpeg, image/jpg",
     listType: "picture",
-    action: "http://127.0.0.1:3000/api/v1/movies/uploadimage",
+    action: `${config.server.host}/api/v1/movies/uploadimage`,
     multiple: false,
     async onChange(info) {
       if (info.file.status !== "uploading") {
@@ -43,7 +44,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
         };
 
         fetch(
-          `http://127.0.0.1:3000/api/v1/movies/deleteimage/${info.response.fileName}`,
+          `${config.server.host}/api/v1/movies/deleteimage/${info.response.fileName}`,
           requestOptions
         )
           .then((response) => response.json())
@@ -62,7 +63,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
     name: "file",
     accept: "image/png, image/jpeg, image/jpg",
     listType: "picture",
-    action: "http://127.0.0.1:3000/api/v1/movies/uploadimage",
+    action: `${config.server.host}/api/v1/movies/uploadimage`,
     multiple: false,
     onChange(info) {
       if (info.file.status !== "uploading") {
@@ -82,7 +83,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
         };
 
         fetch(
-          `http://127.0.0.1:3000/api/v1/movies/deleteimage/${info.response.fileName}`,
+          `${config.server.host}/api/v1/movies/deleteimage/${info.response.fileName}`,
           requestOptions
         )
           .then((response) => response.json())
@@ -143,7 +144,7 @@ const UploadMovie = ({ setKey, reloadActor }) => {
       redirect: "follow",
     };
 
-    fetch("http://127.0.0.1:3000/api/v1/movies/uploadmovie", requestOptions)
+    fetch(`${config.server.host}/api/v1/movies/uploadmovie`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result.uploaded) {
