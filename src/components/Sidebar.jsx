@@ -4,6 +4,7 @@ import {
   LinkOutlined,
   SlidersOutlined,
   UserAddOutlined,
+  EditOutlined
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
@@ -15,6 +16,8 @@ import LinkActors from "../views/LinkActors";
 import Ott from "../views/Ott";
 import AddCarousel from "../views/AddCarousel";
 import AddAdmin from "../views/AddAdmin";
+import EditMovies from "../views/EditMovies";
+import EditActors from "../views/EditActors";
 
 const { Sider, Content } = Layout;
 const Sidebar = () => {
@@ -65,6 +68,16 @@ const Sidebar = () => {
               icon: <UserAddOutlined />,
               label: "Add New Admin",
             },
+            {
+              key: "9",
+              icon: <EditOutlined />,
+              label: "Edit Movies",
+            },
+            {
+              key: "10",
+              icon: <EditOutlined />,
+              label: "Edit Actors",
+            },
           ]}
         />
       </Sider>
@@ -107,6 +120,10 @@ const Sidebar = () => {
             />
           ) : itemKey === "8" ? (
             <AddAdmin key={refresh} setKey={setRefresh} reloadComp={refresh} />
+          ) : itemKey === "9" ? (
+            <EditMovies key={refresh} setKey={setRefresh} reloadComp={refresh} />
+          ) : itemKey === "10" ? (
+            <EditActors key={refresh} setKey={setRefresh} reloadComp={refresh} />
           ) : (
             ""
           )}

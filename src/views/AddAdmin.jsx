@@ -74,12 +74,12 @@ const AddAdmin = () => {
     <>
       <div className="upload-movie-container">
         <div className="upload-movie-main">
-          <h3>Add in Carousel</h3>
+          <h3>Add Admin</h3>
           <div className="upload-movie-item">
             <Select
               showSearch
               className="upload-items"
-              placeholder="Select Movie"
+              placeholder="Select User"
               optionFilterProp="children"
               onChange={onChangeUser}
               onSearch={onSearchUser}
